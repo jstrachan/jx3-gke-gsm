@@ -30,7 +30,7 @@ releases:
   - chart: jx3/jx-preview
   - chart: stable/nginx-ingress
   - chart: cdf/tekton-pipeline
-    version: 0.0.2
+    version: 0.0.4
     name: tekton
     namespace: tekton-pipelines
     values:
