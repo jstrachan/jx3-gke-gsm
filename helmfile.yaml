@@ -36,7 +36,7 @@ releases:
     values:
       - versionStream/charts/cdf/tekton-pipeline/values.yaml.gotmpl
   - chart: jenkins-x/lighthouse
-    version: 0.0.837
+    version: 0.0.836
   - chart: jenkins-x/nexus
   - chart: jenkins-x/chartmuseum
   - chart: jx-labs/pusher-wave
