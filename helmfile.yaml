@@ -5,16 +5,38 @@ environments:
   # the helm charts directly
   default:
     values:
-    - jx-values.yaml
-    - versionStream/src/fake-secrets.yaml.gotmpl
+      - jx-values.yaml
+      - versionStream/src/fake-secrets.yaml.gotmpl
+repositories:
+  - name: banzaicloud-stable
+    url: https://kubernetes-charts.banzaicloud.com
+  - name: cdf
+    url: https://cdfoundation.github.io/tekton-helm-chart
+  - name: external-secrets
+    url: https://godaddy.github.io/kubernetes-external-secrets
+  - name: jenkins-x
+    url: https://storage.googleapis.com/chartmuseum.jenkins-x.io
+  - name: jx3
+    url: https://storage.googleapis.com/jenkinsxio/charts
+  - name: jx-labs
+    url: https://storage.googleapis.com/jenkinsxio-labs-private/charts
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
 releases:
-- chart: jenkins-x/jxboot-helmfile-resources
-- chart: external-secrets/kubernetes-external-secrets
-- chart: jx-labs/jenkins-x-crds
-- chart: jx3/jx-preview
-- chart: stable/nginx-ingress
-- chart: jenkins-x/tekton
-- chart: jenkins-x/lighthouse
-- chart: jenkins-x/nexus
-- chart: jenkins-x/chartmuseum
-- chart: jx-labs/pusher-wave
+  - chart: jenkins-x/jxboot-helmfile-resources
+    version: 1.0.1
+  - chart: external-secrets/kubernetes-external-secrets
+  - chart: jx-labs/jenkins-x-crds
+  - chart: jx3/jx-preview
+  - chart: stable/nginx-ingress
+  - chart: cdf/tekton-pipeline
+    version: 0.0.2
+    name: tekton
+    namespace: tekton-pipelines
+    values:
+      - versionStream/charts/cdf/tekton-pipeline/values.yaml.gotmpl
+  - chart: jenkins-x/lighthouse
+    version: 0.0.837
+  - chart: jenkins-x/nexus
+  - chart: jenkins-x/chartmuseum
+  - chart: jx-labs/pusher-wave
